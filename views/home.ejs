@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+   
+
+    <form method="POST" action="/url">
+        <lable>Enter your original URL</lable>
+        <input type="text" name="url"placeholder="http/:example.com"></input>
+        <button>GENERATE</button>
+        </form></br>
+        <lable>YOUR SHORT URL ID</lable>
+        <% if (locals.id) { %>
+         <p></p></br>URL GENRATED : http://localhost:8001/ola/<%= id %></p>
+        <% } %>
+  </form>
+  
+
+ 
+  </body>
+</html>
