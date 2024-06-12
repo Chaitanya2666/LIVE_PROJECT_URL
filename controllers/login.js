@@ -21,7 +21,7 @@ const handleLoginCheck = async (req, res) => {
 
   const token = setUser(data);
   // res.cookie("token", token);
-  return res.json(token);
+  return res.render("home");
 };
 
 module.exports = { handleLogin, handleLoginCheck };
