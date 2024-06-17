@@ -4,22 +4,53 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      .generated-url-container {
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+      }
+      .generated-url-container p {
+        margin-right: 10px; /* Space between the link and buttons */
+      }
+      .generated-url-container button {
+        margin-left: 10px; /* Space between buttons */
+      }
+    </style>
   </head>
   <body>
-   
 
     <form method="POST" action="/url">
-        <lable>Enter your original URL</lable>
-        <input type="text" name="url"placeholder="http/:example.com"></input>
+        <label>Enter your original URL</label>
+        <input type="text" name="url" placeholder="http://example.com"></input>
         <button>GENERATE</button>
-        </form></br>
-        <lable>YOUR SHORT URL ID</lable>
-        <% if (locals.id) { %>
-         <p></p></br>URL GENRATED : /ola/<%= id %></p>
-        <% } %>
-  </form>
-  
+    </form>
+    <br>
+    <label>YOUR GENERATE URL  :</label>
+    
+    <% if (locals.id) { %>
+      <div class="generated-url-container">
+        <p> <a href="https://live-project-url.onrender.com/ola/<%= id %>" target="_blank">https://live-project-url.onrender.com/ola/<%= id %></a></p>
+        <button onclick="copyToClipboard('https://live-project-url.onrender.com/ola/<%= id %>')">Copy URL</button>
+        <button onclick="refreshPage()">Re-Generate URL</button>
+      </div>
+    <% } %>
 
- 
+    <script>
+      function copyToClipboard(text) {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        alert('URL copied to clipboard');
+      }
+
+      function refreshPage() {
+        location.reload();
+      }
+    </script>
+
   </body>
 </html>
